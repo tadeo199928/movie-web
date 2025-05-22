@@ -1,9 +1,12 @@
 import MovieCard from "../components/MovieCard";
+// import RecentSearch from "../components/ListRecentMovie"
 import { useState } from "react";
 
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
+    // const [recentSearches, setRecentSearches] = useState<List[]>([]);
+
 
     const movies = [
         { id: 1, title: "John Wick", release_date: "2020", url: "x" },
@@ -12,9 +15,10 @@ function Home() {
 
     ]
 
-    const handleSearch = (e:React.FormEvent<HTMLFormElement>) => {
+    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        alert(searchQuery);
+       // alert(searchQuery);
+        // setRecentSearches([...recentSearches, { recentSearch: searchQuery }])
     };
 
     return <div className="home">
@@ -24,20 +28,29 @@ function Home() {
                 placeholder="Search for movies"
                 className="search-input"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}/>
+                onChange={(e) => setSearchQuery(e.target.value)} />
             <button
                 type="submit"
                 className="serach-button">
                 Search
             </button>
         </form>
-        
-        <div className="movie-grid">
+
+         <div className="movie-grid">
             {movies.map((movie) => (
                 
                 <MovieCard movie={movie} key={movie.id} />
             ))}
-        </div>
+        </div> 
+
+        {/* <div className="search-grid">
+            {recentSearches.map((item, index) => (
+                <RecentSearch key={index} list={item} />
+            ))} 
+
+        </div>  */}
+
+
     </div>
 }
 
