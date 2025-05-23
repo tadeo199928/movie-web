@@ -3,7 +3,6 @@ interface List {
 
 }
 
-
 function RerturnList ({list} : {list: List}) {
 
       return (
