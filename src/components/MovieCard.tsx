@@ -1,3 +1,5 @@
+import "../css/MovieCard.css"
+
 interface Movie {
   id:number;
   title: string;
