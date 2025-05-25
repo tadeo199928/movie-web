@@ -2,32 +2,61 @@ import MovieCard from "../components/MovieCard";
 // import RecentSearch from "../components/ListRecentMovie"
 import { useState, useEffect } from "react";
 import "../css/Home.css"
-import {searchMovies, getPopularMovies} from "../services/api"
+import { searchMovies, getPopularMovies } from "../services/api"
+import { type Movie } from "../components/Movie"
 
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("");
     // const [recentSearches, setRecentSearches] = useState<List[]>([]);
-
-    const [movies, setMovies] = useState([]);
-    const [error, setError] = useState(null);
+    const [movies, setMovies] = useState<Movie[]>([]);
+    const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const loadPopularMOvies = async () =>{
+        const loadPopularMovies = async () => {
             try {
-                const popularMovies = await getPopularMovies()
-                setMovies(popularMovies)
-            } catch (err) {}
-            finally {
-                setLoading(false)
+                const popularMovies = await getPopularMovies();
+                setMovies(popularMovies);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    console.log(err.message);
+                    setError("Failed to load movies: " + err.message);
+                } else {
+                    console.log(err);
+                    setError("Failed to load movies...");
+                }
+            } finally {
+                setLoading(false);
             }
-        }
+        };
+
+        loadPopularMovies();
     }, []);
 
-    const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-       // alert(searchQuery);
+
+    const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        if (!searchQuery.trim()) return
+        if (loading) return
+
+        setLoading(true)
+        try {
+            const searchReseults = await searchMovies(searchQuery)
+            setMovies(searchReseults)
+            setError(null)
+        } catch (err: unknown) {
+            if (err instanceof Error) {
+                console.log(err.message);
+                setError("Failed to search movies: " + err.message);
+            } else {
+                console.log(err);
+                setError("Failed to load movies...");
+            }
+        } finally {
+            setLoading(false);
+        }
+        // alert(searchQuery);
         // setRecentSearches([...recentSearches, { recentSearch: searchQuery }])
     };
 
@@ -46,12 +75,16 @@ function Home() {
             </button>
         </form>
 
-         <div className="movie-grid">
-            {movies.map((movie) => (
-                
-                <MovieCard movie={movie} key={movie.id} />
-            ))}
-        </div> 
+        {error && <div className="error-message">{error}</div>}
+        {loading ? <div className="loading">Loading...</div> :
+            <div className="movies-grid">
+                {movies.map((movie) => (
+
+                    <MovieCard movie={movie} key={movie.id} />
+                ))}
+            </div>
+        }
+
 
         {/* <div className="search-grid">
             {recentSearches.map((item, index) => (
