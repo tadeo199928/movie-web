@@ -5,28 +5,30 @@ import { useMovieContext } from "../context/MovieContext";
 
 function MovieCard({ movie }: { movie: Movie }) {
 
-  const {isFavorite, addToFavorites, removeFromFavorites} = useMovieContext()
+  const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext()
   const favorite = isFavorite(movie.id)
-  
+
   function onFavoriteClick(e: any) {
     e.preventDefault()
     if (favorite) removeFromFavorites(movie.id)
-      else addToFavorites(movie)
+    else addToFavorites(movie)
   }
 
   return (
-    <div className="movie-card">
+    <div className={`movie-card ${favorite ? "favorited" : ""}`}>
       <div className="movie-poster">
         <img
           src={
             movie.poster_path
               ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-              : "../assets/404.jpg" 
+              : "/404.jpg"
           }
           alt={movie.title}
-        />        <div className="movie-overlay">
+        />
+
+        <div className="movie-overlay">
           <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>
-            ♡
+            ♥
           </button>
         </div>
       </div>

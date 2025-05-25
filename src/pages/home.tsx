@@ -18,6 +18,7 @@ function Home() {
             try {
                 const popularMovies = await getPopularMovies();
                 setMovies(popularMovies);
+                setError(null)
             } catch (err: unknown) {
                 if (err instanceof Error) {
                     console.log(err.message);
@@ -32,7 +33,7 @@ function Home() {
         };
 
         loadPopularMovies();
-    }, []);
+    }, [searchQuery]);
 
 
     const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
