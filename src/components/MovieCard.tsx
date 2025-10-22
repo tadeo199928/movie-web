@@ -12,9 +12,9 @@ function MovieCard({ movie }: { movie: Movie }) {
     else addToFavorites(movie);
   }
 
-  function onMovieClick( e : React.MouseEvent<HTMLDivElement>) {
-    e.preventDefault();
-  }
+  // function onMovieClick( e : React.MouseEvent<HTMLDivElement>) {
+  //   e.preventDefault();
+  // }
 
   return (
     <div className={`movie-card ${favorite ? "favorited" : ""}`}>
@@ -50,9 +50,9 @@ function MovieCard({ movie }: { movie: Movie }) {
         <h3>{movie.title}</h3>
         <div className="movie-meta">
           <p className="movie-year">{movie.release_date?.split("-")[0]}</p>
-          <button className="details-button" onClick={onMovieClick}>
+          {/* <button className="details-button" onClick={onMovieClick}>
             Overview
-          </button>
+          </button> */}
         </div>
       </div>
     </div>
