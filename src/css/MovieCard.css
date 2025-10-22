@@ -129,3 +129,72 @@
     font-size: 1.2rem;
   }
 }
+
+/* ...existing code... */
+
+/* Rating badge on poster */
+.movie-rating-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  backdrop-filter: blur(4px);
+}
+
+.rating-star {
+  font-size: 14px;
+}
+
+.rating-value {
+  color: #ffd700;
+  font-size: 14px;
+}
+
+/* Movie meta info */
+.movie-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.movie-year {
+  color: #999;
+  font-size: 14px;
+  margin: 0;
+}
+
+.movie-rating {
+  color: #ffd700;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+}
+
+
+.movie-overview {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #ccc;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.movie-card:hover .movie-overview {
+  opacity: 1;
+}
+
+/* ...existing code... */
