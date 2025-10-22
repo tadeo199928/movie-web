@@ -130,9 +130,6 @@
   }
 }
 
-/* ...existing code... */
-
-/* Rating badge on poster */
 .movie-rating-badge {
   position: absolute;
   top: 10px;
@@ -156,13 +153,14 @@
   font-size: 14px;
 }
 
-/* Movie meta info */
 .movie-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   margin-top: 5px;
+  border-top: #999 1px solid;
+  padding-top: 0.2rem;
 }
 
 .movie-year {
@@ -187,7 +185,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines */
   -webkit-box-orient: vertical;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -196,5 +193,3 @@
 .movie-card:hover .movie-overview {
   opacity: 1;
 }
-
-/* ...existing code... */
