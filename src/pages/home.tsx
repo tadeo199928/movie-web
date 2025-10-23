@@ -60,7 +60,6 @@ function Home() {
 
   const handleMovieInfo = (movie: Movie) => {
     setSelectedMovie(movie);
-    console.log(movie.overview);
   };
 
   const closeMovie = () => {

@@ -34,7 +34,7 @@ function MovieOverview({
           <h2>{movie.title}</h2>
           <p>{movie.overview}</p>
           <button onClick={closeMovie}>Close</button>
-          <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>♥</button>
+          <button className={`overview-fav-button ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>♥</button>
         </div>
       </div>
     </div>

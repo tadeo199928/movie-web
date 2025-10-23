@@ -14,7 +14,7 @@
 .movie-overview-content-box {
   padding: 20px;
   border-radius: 10px;
-  max-width: 800px;
+  max-width: 900px;
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
@@ -23,7 +23,7 @@
 }
 
 .movie-overview-content-box img {
-  width: 200px;
+  width: 20rem;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
@@ -32,8 +32,12 @@
 .movie-overview-content-box h2 {
   margin-top: 0;
   margin-bottom: 20px;
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: bold;
+}
+
+.movie-overview-content-box p {
+  font-size: 1.2rem;
 }
 
 .movie-overview-content-box button {
@@ -59,15 +63,16 @@
 .movie-details p {
   text-align: justify;
 }
-.favorite-btn {
+.overview-fav-button {
   background-color: transparent !important;
+  margin-left: 72%;
 }
 
-.favorite-btn:hover {
+.overview-fav-button:hover {
   color: #ff6b81;
   border-color: none !important;
 }
 
-.favorite-btn.active {
+.overview-fav-button.active {
   color: #ff4757;
 }
