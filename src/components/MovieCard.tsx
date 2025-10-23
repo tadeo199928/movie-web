@@ -2,7 +2,7 @@ import "../css/MovieCard.css";
 import { type Movie } from "../components/Movie";
 import { useMovieContext } from "../context/MovieContext";
 
-function MovieCard({ movie }: { movie: Movie }) {
+function MovieCard({ movie, movieInfo }: { movie: Movie, movieInfo: (movie: Movie) => void })  {
   const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext();
   const favorite = isFavorite(movie.id);
 
@@ -12,9 +12,11 @@ function MovieCard({ movie }: { movie: Movie }) {
     else addToFavorites(movie);
   }
 
-  // function onMovieClick( e : React.MouseEvent<HTMLDivElement>) {
-  //   e.preventDefault();
-  // }
+  function onMovieClickHandler(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    movieInfo(movie);
+  }
+
 
   return (
     <div className={`movie-card ${favorite ? "favorited" : ""}`}>
@@ -50,9 +52,9 @@ function MovieCard({ movie }: { movie: Movie }) {
         <h3>{movie.title}</h3>
         <div className="movie-meta">
           <p className="movie-year">{movie.release_date?.split("-")[0]}</p>
-          {/* <button className="details-button" onClick={onMovieClick}>
+          <button className="details-button" onClick={onMovieClickHandler} >
             Overview
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

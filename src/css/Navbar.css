@@ -1,10 +1,9 @@
 .navbar {
-  background-color: #000000;
+  background-color: transparent;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand {
@@ -18,7 +17,7 @@
 }
 
 .nav-link {
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
